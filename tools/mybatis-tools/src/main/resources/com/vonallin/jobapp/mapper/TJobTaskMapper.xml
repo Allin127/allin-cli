@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vonallin.jobapp.mapper.TJobTaskMapper">
+  <resultMap id="BaseResultMap" type="com.vonallin.jobapp.dao.TJobTask">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="crontab" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="trigger_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_job_task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.vonallin.jobapp.dao.TJobTask">
+    insert into t_job_task (id, crontab, trigger_url, 
+      create_time, status)
+    values (#{id,jdbcType=BIGINT}, #{crontab,jdbcType=VARCHAR}, #{triggerUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.vonallin.jobapp.dao.TJobTask">
+    update t_job_task
+    set crontab = #{crontab,jdbcType=VARCHAR},
+      trigger_url = #{triggerUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, crontab, trigger_url, create_time, status
+    from t_job_task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, crontab, trigger_url, create_time, status
+    from t_job_task
+  </select>
+</mapper>
