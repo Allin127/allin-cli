@@ -1,0 +1,48 @@
+{
+  "page": {
+    "currentPage": 1,
+    "itemsperpage": 999,
+    "totalItems": 1,
+    "totalPages": 1
+  },
+  "list": [
+    {
+      "account_id": "",
+      "account_name": "",
+      "createTime": "2019-01-13 22:43:19",
+      "creatorId": "c425d4c911d94d8992c917aecf010b64",
+      "creatorName": "shjx",
+      "delstatus": "0",
+      "fahuo_total": "0",
+      "free_num": 0,
+      "fulldept_id": "/1565c5c2ec524d67ac5cfcaf7271a8f1/",
+      "fulldept_name": "/上海憬迅/",
+      "fullpost_id": "/c39aa401bc754d82927872d831ee206a/73a1f887a7104d419d3658dc08a5fd99/",
+      "fullpost_name": "/总经理/管理员/",
+      "gz_used": "0",
+      "id": "0586d765fb0b4308b0d97623e895a491",
+      "inner_usedList": [],
+      "jianju_num": "0",
+      "kehu_number": "",
+      "kucun_num": "0",
+      "lingjian_num": "0",
+      "lingyong_total": "0",
+      "modifiedTime": null,
+      "moju_num": "0",
+      "myflag": "0",
+      "name": "3536",
+      "note": "",
+      "number": "666",
+      "org_code": "b9121552671f45e3bbd1fab9129ce401",
+      "pro_id": "05fdd73ba5dc4b609dbbc89e9b593c9c",
+      "sendList": [],
+      "superOrg_id": "1565c5c2ec524d67ac5cfcaf7271a8f1",
+      "superOrg_name": "上海憬迅",
+      "try_item_id": "0d36799f331c4032a72e2946390d8f91",
+      "unfree_num": 0,
+      "weijiao_num": "0",
+      "xuqiuList": [],
+      "yj_used": "0"
+    }
+  ]
+}

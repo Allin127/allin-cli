@@ -1,0 +1,2 @@
+//install package
+ npm install --save webpack webpack-cli babel-core    babel-loader    babel-plugin-lodash    babel-plugin-syntax-dynamic-import    babel-plugin-transform-class-properties    babel-plugin-transform-decorators-legacy    babel-plugin-transform-object-rest-spread    babel-preset-es2015    babel-preset-react commander inquirer chalk yeoman-generator
