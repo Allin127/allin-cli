@@ -8,7 +8,6 @@ let initDB = function(config) {
         password: 'Fc201617Fc201617',
         database: 'beadmin'
     });
-    console.log("new one");
 }
 
 let __getPool = function(){

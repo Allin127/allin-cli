@@ -8,14 +8,14 @@ module.exports = function(cmd){
     cmd.command(`${DOMAIN}:ddl [filePath] `).
     usage('[filePath] \n' +
         '\t filePath:ddl的源头json\n'
-    ).action(function (filePath) {
+    ).
+    action(function (filePath) {
         ddl(path.resolve(process.cwd(),filePath));
     });
 
-    cmd.command(`${DOMAIN}:batis [xmlPath] `).
-    usage('[xmlPath] \n' +
-        '\t xmlPath:基础xml模板\n'
-    ).action(function (xmlPath) {
-        batis(path.resolve(process.cwd(),xmlPath));
+    //batis工具生成
+    cmd.command(`${DOMAIN}:batis`).
+    action(function () {
+        batis();
     });
 };

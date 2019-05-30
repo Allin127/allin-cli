@@ -3,5 +3,7 @@
     "jdbc.url":"jdbc:mysql://localhost:3306/job?nullCatalogMeansCurrent=true",
     "jdbc.username":"root",
     "jdbc.password":"Fc201617Fc201617",
-    "java.package":"com.vonallin.jobapp"
+    "java.package":"com.vonallin.jobapp",
+
+    "project.root":"/Users/fengchao085/workspace/allin/job-app"
 }

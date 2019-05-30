@@ -19,6 +19,20 @@ function __readDirSync(path) {
     return files;
 }
 
+function __createDir(to){
+        var sep = path.sep;
+        var folders = path.dirname(to).split(sep);
+        var p = '';
+        console.log(folders);
+        while (folders.length) {
+            p += folders.shift() + sep;
+            if (!fs.existsSync(p)) {
+                fs.mkdirSync(p);
+            }
+        }
+}
+
+
 function __rename(src, replacement) {
     return function (files) {
         let arr = [];
@@ -49,10 +63,16 @@ function __writeFileSync(path,strData) {
     fs.writeFileSync(path, strData, {encoding: "utf8"});
 }
 
+function __packageToPath(packagePath){
+    return packagePath.replace(new RegExp(/\./,"gm"),"/");
+}
+
 
 module.exports = {
     rename: __rename,
     readDir: __readDirSync,
+    createDir: __createDir,
     readFile:__readFileSync,
-    writeFile:__writeFileSync
+    writeFile:__writeFileSync,
+    packageToPath:__packageToPath
 };
