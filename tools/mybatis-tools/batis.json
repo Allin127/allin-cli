@@ -1,9 +1,8 @@
 {
     "jdbc.driverClassName":"com.mysql.cj.jdbc.Driver",
-    "jdbc.url":"jdbc:mysql://localhost:3306/job?nullCatalogMeansCurrent=true",
+    "jdbc.url":"jdbc:mysql://localhost:3306/bettle?nullCatalogMeansCurrent=true",
     "jdbc.username":"root",
     "jdbc.password":"Fc201617Fc201617",
-    "java.package":"com.vonallin.jobapp",
-
-    "project.root":"/Users/fengchao085/workspace/allin/job-app"
+    "java.package":"com.vonallin.bettle",
+    "project.root":"/Users/fengchao085/workspace/allin/be-admin-srv"
 }

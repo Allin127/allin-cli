@@ -1,6 +1,8 @@
 var path = require('path')
 var ddl = require("../db/grammar")
 var batis = require("../db/batis")
+var gradleCacheTransform = require("../gradle/cache")
+
 
 const DOMAIN = "caster";
 module.exports = function(cmd){
@@ -17,5 +19,16 @@ module.exports = function(cmd){
     cmd.command(`${DOMAIN}:batis`).
     action(function () {
         batis();
+    });
+
+    //batis工具生成
+    cmd.command(`${DOMAIN}:gradle-cache-transfer <source> <dest>`).
+    usage('[source] \n' +
+        '\t source:gradle cache的目录\n' +
+        '[dest] \n' +
+        '\t dest: maven转换的路径\n').
+    option('-c, --classPath <mainClass>','class path').
+    action(function (source,dest,cmd) {
+        gradleCacheTransform(source,dest,cmd.classPath);
     });
 };

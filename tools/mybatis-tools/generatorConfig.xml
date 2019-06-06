@@ -14,7 +14,7 @@
 
         <!-- 数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/job?nullCatalogMeansCurrent=true"
+                        connectionURL="jdbc:mysql://localhost:3306/bettle?nullCatalogMeansCurrent=true"
                         userId="root"
                         password="Fc201617Fc201617">
         </jdbcConnection>
@@ -26,23 +26,23 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成DAO的包名和位置-->
-        <javaModelGenerator targetPackage="com.vonallin.jobapp.dao" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="com.vonallin.bettle.dao" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <property name="constructorBased" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件Map.xml的包名和位置-->
-        <sqlMapGenerator targetPackage="com.vonallin.jobapp.mapper" targetProject="./src/main/resources">
+        <sqlMapGenerator targetPackage="com.vonallin.bettle.mapper" targetProject="./src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成Mapper接口的包名和位置，其中type有两种形式：XMLMAPPER表示生成xml映射文件；ANNOTATEDMAPPER，表示不生成xml，生成的dao采用注解来写sql-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.vonallin.jobapp.mapper" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.vonallin.bettle.mapper" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 表的匹配 -->
-        <table tableName="%"  enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+        <table tableName="%"  enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true"></table>
         <!--&lt;!&ndash; sql占位符，表示所有的表 &ndash;&gt;-->
         <!--<table tableName="%">-->
         <!--<generatedKey column="epa_id" sqlStatement="Mysql" identity="true" />-->

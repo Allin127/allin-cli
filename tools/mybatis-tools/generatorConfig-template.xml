@@ -40,9 +40,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 表的匹配 -->
-        <table tableName="%"  enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>
+        <table tableName="%"  enableCountByExample="true"
+               enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true"></table>
         <!--&lt;!&ndash; sql占位符，表示所有的表 &ndash;&gt;-->
         <!--<table tableName="%">-->
         <!--<generatedKey column="epa_id" sqlStatement="Mysql" identity="true" />-->

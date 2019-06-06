@@ -28,14 +28,14 @@ module.exports = function () {
             /** 3. format dao下面的文件 因为需要lombok的 builder方便使用，当然也可以不用这么做，具体配置看DaoModifiers **/
             let files = readDir(path.resolve(cwd, "src"));
             const daoFiles = files.filter(path => path.indexOf("/dao/") > 0);
+            let successCount=0;
             daoFiles.forEach(function (daoFilePath) {
                 var lineReader = readLine.createInterface({
                     input: fs.createReadStream(daoFilePath)
                 });
                 let contents = [];
-                let daoModifiers = require("./DaoModifiers");
+                let daoModifiers = require("./DaoModifiers").slice(0);//要copy，否则每次 require都是同一个对象
                 let modifier = daoModifiers.shift();
-
                 lineReader.on('line', function (line) {
                     contents.push(line);
                     if (modifier && modifier.testReg.test(line)) {
@@ -49,9 +49,12 @@ module.exports = function () {
                 });
                 lineReader.on('close', function () {
                     writeFile(daoFilePath, contents.join("\n"));
-                    resolve("success");
+                    successCount++;
+                    if(successCount===daoFiles.length){
+                        resolve("success");
+                    }
                 });
-            })
+            });
         });
     }).then(function (result) {
         /** 4. config模板文件生成 **/
