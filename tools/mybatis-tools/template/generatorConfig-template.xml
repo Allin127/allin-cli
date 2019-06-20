@@ -4,7 +4,9 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <classPathEntry location="./mysql-connector-java-8.0.13.jar" />
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="com.vonallin.lib.tool.mybatis.generator.PagePlugin"></plugin>
+
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"></property>
@@ -42,7 +44,10 @@
         <!-- 表的匹配 -->
         <table tableName="%"  enableCountByExample="true"
                enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               selectByExampleQueryId="true"></table>
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+        </table>
         <!--&lt;!&ndash; sql占位符，表示所有的表 &ndash;&gt;-->
         <!--<table tableName="%">-->
         <!--<generatedKey column="epa_id" sqlStatement="Mysql" identity="true" />-->

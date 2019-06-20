@@ -6,8 +6,8 @@ const fs = require('fs');
 module.exports = function () {
     /** 1. 根据tempalate和配置生成generatorConfig.xml **/
     const cwd = process.cwd();
-    let template = readFile(path.resolve(cwd, "generatorConfig-template.xml"));
-    const config = JSON.parse(readFile(path.resolve(cwd, "batis.json")));
+    let template = readFile(path.resolve(cwd,"template", "generatorConfig-template.xml"));
+    const config = JSON.parse(readFile(path.resolve(cwd, "config.json")));
     _.forEach(config, function (value, key) {
         template = template.replace(new RegExp("\\$\{" + key + "\}", "gm"), value);
     });
@@ -38,13 +38,29 @@ module.exports = function () {
                 let modifier = daoModifiers.shift();
                 lineReader.on('line', function (line) {
                     contents.push(line);
-                    if (modifier && modifier.testReg.test(line)) {
-                        if (modifier.mode === "after") {
-                            contents.push(modifier.content);
-                        } else if (modifier.mode === "before") {
-                            contents.splice(contents.length - 1, 0, modifier.content);
+                    if (modifier) {
+                        let _testModifier = function(_modifier){
+                            if(_modifier.testReg.test(line)){
+                                if (_modifier.mode === "after") {
+                                    contents.push(_modifier.content);
+                                } else if (_modifier.mode === "before") {
+                                    contents.splice(contents.length - 1, 0, _modifier.content);
+                                }
+                                return true;
+                            }
                         }
-                        modifier = daoModifiers.shift();
+                        if(modifier.length>0){
+                            for (let _index in modifier){
+                               if(_testModifier(modifier[_index])){
+                                   modifier = daoModifiers.shift();
+                                   break;
+                               }
+                            }
+                        }else{
+                            if(_testModifier(modifier)){
+                                modifier = daoModifiers.shift();
+                            }
+                        }
                     }
                 });
                 lineReader.on('close', function () {
@@ -59,7 +75,7 @@ module.exports = function () {
     }).then(function (result) {
         /** 4. config模板文件生成 **/
         let dbConfigFileName = 'DatabaseConfiguration.java';
-        let dbConfig = readFile(path.resolve(cwd, dbConfigFileName));
+        let dbConfig = readFile(path.resolve(cwd,'template',dbConfigFileName));
         _.forEach(config, function (value, key) {
             dbConfig = dbConfig.replace(new RegExp("\\$\{" + key + "\}", "gm"), value);
         });
