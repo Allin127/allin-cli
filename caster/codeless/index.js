@@ -73,38 +73,7 @@ module.exports = function () {
             });
         });
     }).then(function (result) {
-        /** 4. 生成XXXService.java**/
-        let files = readDir(path.resolve(cwd, "src"));
-        const daoFiles = files.filter(path => path.indexOf("/dao/") > 0&&path.indexOf("Example") === -1);
-        let serviceTemplate = readFile(path.resolve(cwd, 'template', 'ServiceTemplate.java'));
-        let serviceDir = path.resolve(cwd, `src/main/java/${packageToPath(config["java.package"])}/service/`);
-        childProcess.spawnSync('mkdir', ['-p', serviceDir]);
-        daoFiles.forEach(function (daoFilePath) {
-            config.serviceClassName=daoFilePath.split("/").pop().split(".").shift();
-            let serviceOutput =serviceTemplate;
-            _.forEach(config, function (value, key) {
-                serviceOutput = serviceOutput.replace(new RegExp("\\$\{" + key + "\}", "gm"), value);
-            });
-            writeFile(path.resolve(serviceDir, `${config.serviceClassName}Service.java`), serviceOutput);
-        });
-        delete config.serviceClassName;
-        /** 5. 生成XXXResource.java **/
-        let resourceTemplate = readFile(path.resolve(cwd, 'template', 'ResourceTemplate.java'));
-        let resourceDir = path.resolve(cwd, `src/main/java/${packageToPath(config["java.package"])}/resource/`);
-        childProcess.spawnSync('mkdir', ['-p', resourceDir]);
-        daoFiles.forEach(function (daoFilePath) {
-            config.serviceClassName=daoFilePath.split("/").pop().split(".").shift();
-            config.rootResourcePath="/"+config["java.package"].split(".").pop()+config.serviceClassName.replace(/([A-Z])/g,"/$1").toLowerCase();
-            let resourceOutput = resourceTemplate;
-            _.forEach(config, function (value, key) {
-                resourceOutput = resourceOutput.replace(new RegExp("\\$\{" + key + "\}", "gm"), value);
-            });
-            writeFile(path.resolve(resourceDir, `${config.serviceClassName}Resource.java`), resourceOutput);
-        });
-        delete config.serviceClassName;
-        delete config.rootResourcePath;
-
-        /** 6. config模板文件生成 **/
+        /** 4. config模板文件生成 **/
         if(config.isConfigDatabase) {
             let dbConfigFileName = 'DatabaseConfiguration.java';
             let dbConfig = readFile(path.resolve(cwd, 'template', dbConfigFileName));
@@ -115,10 +84,7 @@ module.exports = function () {
             childProcess.spawnSync('mkdir', ['-p', dbConfigDir]);
             writeFile(path.resolve(dbConfigDir, dbConfigFileName), dbConfig);
         }
-
-
-
-        /** 7. copy到java对应项目下 **/
+        /** 5. copy到java对应项目下 **/
         if (config['project.root'])
             childProcess.spawnSync('cp', ['-r', path.resolve(cwd, 'src'), config['project.root']]);
     });

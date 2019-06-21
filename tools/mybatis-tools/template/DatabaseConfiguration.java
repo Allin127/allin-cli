@@ -57,3 +57,4 @@ public class DatabaseConfiguration {
     }
 
     }
+// generate by allin-codeless
