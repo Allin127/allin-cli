@@ -13,7 +13,7 @@ public class ${serviceClassName}Service {
     ${serviceClassName}Mapper ${serviceClassName}Mapper;
 
     public List<${serviceClassName}> list() {
-        return ${serviceClassName}Mapper.selectByExampleWithBLOBs(${serviceClassName}Example.builder().oredCriteria(new ArrayList()).build());
+        return ${serviceClassName}Mapper.selectByExample(${serviceClassName}Example.builder().oredCriteria(new ArrayList()).build());
     }
 
     public ${serviceClassName} list(Long id) {

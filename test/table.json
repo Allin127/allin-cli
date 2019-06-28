@@ -1,26 +1,26 @@
 {
   "id": 1.0,
-  "tableName": "t_job",
+  "tableName": "table_name_1",
   "createTime": "Jun 20, 2019 11:05:46 PM",
-  "app": "job-app",
-  "tableSchema": "jobappmydata",
-  "tableDesc": "管理脚本的表",
+  "app": "app1",
+  "tableSchema": "5555",
+  "tableDesc": "你好啊2333333",
   "columnList": [
     {
       "id": 1,
-      "name": "job_name",
+      "name": "col1",
       "tableId": 1,
-      "type": "VARCHAR(64)",
-      "isNull": 0,
-      "comment": "job名字",
+      "type": "VARCHAR(128)",
+      "isNull": 1,
+      "comment": "comment123123",
       "createTime": "Jun 25, 2019 11:25:37 AM",
-      "sysType": 0
+      "length": 0
     }
   ],
   "indexList": [
     {
       "id": 1,
-      "name": "",
+      "name": "Hello",
       "type": "0",
       "comment": "",
       "refColumnIds": "col1",

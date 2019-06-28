@@ -1,15 +1,27 @@
 const {rename, readDir, readFile, writeFile} = require("../../../utils/helper");
 const tapable = require("./tapable");
+/**
+ *
+ * @param path  可以使用读取文件方式
+ * @param data   可以选用base64String 直接传data进来，用编码避免字符串原串问题
+ */
 
-module.exports = function (path) {
-    let source = JSON.parse(readFile(path));
-    tapable.tableName(source.tableName)
-        .load(source)
-        .register("column")
-        .register("fieldType")
-        .register("defaultDBValue")
-        .register("nullable")
-        .register("comments")
+module.exports = function ({path,data}) {
+    let obj;
+    if (path){
+        obj = JSON.parse(readFile(path));
+    }else {
+        data = Buffer.from(data, 'base64').toString();
+        obj = JSON.parse(data);
+    }
+    tapable.tableName(obj)
+        .load(obj)
+        .registerCol("name")
+        .registerCol("type")
+        .registerCol("isNull")
+        .registerCol("autoIncrement")
+        .registerCol("defaultValue")
+        .registerCol("comment")
         .registerIndexAnaylzer("indexKey")
         .applyAnaylse()
         .display();

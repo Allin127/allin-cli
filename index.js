@@ -54,7 +54,7 @@ cmd.command('build')
 cmd.command('format [project]')
     .usage('[project] \n' +
         '\t 转换对应的项目wx\n'
-    ).action(function (cmd) {
+    ).action(function () {
     command.format();
 });
 

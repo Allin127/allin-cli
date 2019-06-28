@@ -1,5 +1,5 @@
 
 
 module.exports= function(value){
-    return value.toUpperCase()
+   return value?"":"NOT NULL";
 }

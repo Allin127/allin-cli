@@ -46,7 +46,7 @@
                enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                selectByExampleQueryId="true">
             <property name="useActualColumnNames" value="false"/>
-
+            <generatedKey column="id" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
         </table>
         <!--&lt;!&ndash; sql占位符，表示所有的表 &ndash;&gt;-->
         <!--<table tableName="%">-->

@@ -23,11 +23,17 @@
 // PRIMARY KEY  PK_WMC_USR_MEMBER_CUSTOMER      (ID),
 
 
+/**
+ *
+ * @param el
+ * type     static INDEX_FILED_TYPE = [{key: "唯一约束", value: 0}, {key: "普通索引", value: 1}];
+ * @returns {string}
+ */
 
 module.exports = function (el) {
     let output = "";
-    output += (el["constraintType"].value == "uk" ? "UNIQUE\tKEY\t" : "\tKEY\t");
-    output += el["keyName"] + "\t";
-    output += `(${el["columnList"].map(el => el.value).join(",")})`;
+    output += (el["type"] == "0" ? "UNIQUE\tKEY\t" : "\tKEY\t");
+    output += el["name"] + "\t";
+    output += `(${el["refColumnIds"]})`;
     return output.toUpperCase();
 }

@@ -21,7 +21,7 @@ public class ${serviceClassName}Resource {
     }
 
     @RequestMapping(value = "/read/{id}", method = RequestMethod.GET)
-    public BaseResponseDTO readById(@PathVariable("id") Long id) {
+    public BaseResponseDTO<${serviceClassName}> readById(@PathVariable("id") Long id) {
         ${serviceClassName} data = ${serviceClassName}Service.list(id);
         BaseResponseDTO<${serviceClassName}> resp = new BaseResponseDTO<>(data);
         return resp;
@@ -32,7 +32,7 @@ public class ${serviceClassName}Resource {
     public BaseResponseDTO create(@RequestBody ${serviceClassName} record) {
         record.setId(null);
         int count = ${serviceClassName}Service.create(record);
-        BaseResponseDTO<Integer> resp = new BaseResponseDTO<>(count);
+        BaseResponseDTO<Long> resp = new BaseResponseDTO<>(record.getId());
         return resp;
     }
 

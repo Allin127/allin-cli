@@ -5,6 +5,6 @@
     "jdbc.password":"Fc201617Fc201617",
     "java.package":"com.vonallin.bettle",
     "module":"bettle",
-    "project222.root":"/Users/fengchao085/workspace/allin/be-admin-srv",
+    "project.root":"/Users/fengchao085/workspace/allin/be-admin-srv",
     "isConfigDatabase":false
 }
