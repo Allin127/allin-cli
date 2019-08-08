@@ -10,6 +10,9 @@ module.exports = new function () {
     var tableWrapper = [];
     this.tableName = (tableObj) =>{
         tableWrapper = TableWrapper(tableObj);
+        // for(var i=1;i<100;i++){
+        //     setTimeout(function(){console.log("hello"+i)},1000*i);
+        // }
         return this;
     }
 
@@ -28,6 +31,7 @@ module.exports = new function () {
 
     this.load = (__source) => {
         source = __source;
+        //默认字段添加
         source.columnList.unshift({"name": "ID", "type": "BIGINT(20)", "isNull": 0, "comment": "系统-主键", "autoIncrement": 1}, {"name": "CREATE_TIME", "type": "DATETIME", "isNull": 1, "comment": "系统-创建时间","defaultValue":"current_timestamp"});
         return this;
     }

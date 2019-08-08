@@ -5,43 +5,40 @@ var gradleCacheTransform = require("../gradle/cache")
 
 
 const DOMAIN = "caster";
-module.exports = function(cmd){
-    /** ddl转换 **/
-    cmd.command(`${DOMAIN}:ddl-path [filePath] `).
-    usage('[filePath] \n' +
-        '\t filePath:ddl的源头json配置\n'
-    ).
-    action(function (filePath) {
-        ddl({path:path.resolve(process.cwd(),filePath)});
-    });
+module.exports = function (cmd) {
+    /** 将json格式转换成ddl可执行sql **/
+    cmd.command(`${DOMAIN}:ddl-path [filePath]`)
+        .description("将json格式转换成ddl可执行sql")
+        .usage('\n\n \t[filePath] \t filePath:ddl的源头json配置文件路径\n\n')
+        .action(function (filePath) {
+            ddl({path: path.resolve(process.cwd(), filePath)});
+        });
 
-    cmd.command(`${DOMAIN}:ddl [data] `).
-    usage('[data] \n' +
-        '\t data:ddl的源头json数据\n'
-    ).
-    action(function (data) {
-        ddl({data});
-    });
+    cmd.command(`${DOMAIN}:ddl [data]`)
+        .description("将json格式转换成ddl可执行sql")
+        .usage('\n\n \t[data] \t data:ddl的源头json数据\n\n')
+        .action(function (data) {
+            ddl({data});
+        });
 
     /** batis-generator 和 code-less命令一样 **/
-    let codeLess = function(){
+    let codeLess = function () {
         batis();
-    }
-    cmd.command(`${DOMAIN}:batis`).
-    action(codeLess);
-    cmd.command(`${DOMAIN}:code-less`).
-    action(codeLess);
-
+    };
+    cmd.command(`${DOMAIN}:batis`)
+        .description("执行batis转换工程")
+        .action(codeLess);
+    cmd.command(`${DOMAIN}:code-less`)
+        .description("执行batis转换工程")
+        .action(codeLess);
 
 
     /** gradle的本地cache转换成maven本地 **/
-    cmd.command(`${DOMAIN}:gradle-cache-transfer <source> <dest>`).
-    usage('[source] \n' +
-        '\t source:gradle cache的目录\n' +
-        '[dest] \n' +
-        '\t dest: maven转换的路径\n').
-    option('-c, --classPath <mainClass>','class path').
-    action(function (source,dest,cmd) {
-        gradleCacheTransform(source,dest,cmd.classPath);
+    cmd.command(`${DOMAIN}:gradle-cache-transfer <source> <dest>`)
+        .description("gradle的本地cache转成maven本地库，.gradle -> .m2")
+        .usage('\n\n \t[source]  \t source:gradle cache的目录'
+                +'\n \t[dest]    \t dest: maven转换的路径')
+        .option('-c, --classPath <mainClass>', 'class path').action(function (source, dest, cmd) {
+        gradleCacheTransform(source, dest, cmd.classPath);
     });
 };
