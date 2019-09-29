@@ -39,7 +39,7 @@
     "shelljs": "^0.8.2",
     "tracer": "^0.9.1",
     "webpack-dev-middleware": "^3.1.3",
-    "webpack-dev-server": "^3.1.4",
+    "webpack-dev-server": "^3.1.11",
     "webpack-hot-middleware": "^2.22.2",
     "yeoman-generator": "^2.0.5"
   },
