@@ -34,7 +34,7 @@
     "postcss-import": "^11.1.0",
     "prettier": "^1.13.5",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.3",
     "shelljs": "^0.8.2",
     "tracer": "^0.9.1",
