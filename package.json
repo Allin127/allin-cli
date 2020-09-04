@@ -29,7 +29,7 @@
     "gitclone": "^2.0.0",
     "inquirer": "^6.0.0",
     "mysql": "^2.17.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "ora": "^2.1.0",
     "postcss-import": "^11.1.0",
     "prettier": "^1.13.5",
